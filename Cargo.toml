@@ -17,3 +17,4 @@ base64 = "0.22.1"
 
 [dev-dependencies]
 mail-auth = { git = "https://github.com/olehmisar/mail-auth.git", rev = "fb1d434", features = ["rust-crypto"], default-features = false  }
+regex = "1.10.4"
