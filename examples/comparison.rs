@@ -43,10 +43,24 @@ fn main() {
     println!("--- mini-mail-auth output ---");
     println!("{}", signed_email_mini_mail_auth);
 
+    // Normalize the signatures by removing the timestamp and signature fields.
+    let signed_email_mail_auth = normalize_signature(&signed_email_mail_auth);
+    let signed_email_mini_mail_auth = normalize_signature(&signed_email_mini_mail_auth);
+
     assert_eq!(
         signed_email_mail_auth, signed_email_mini_mail_auth,
         "The signatures from mail-auth and mini-mail-auth do not match!"
     );
 
     println!("\n✅ Signatures match!");
+}
+
+fn normalize_signature(signed_email: &str) -> String {
+    use regex::Regex;
+    // This regex removes the `b=` (signature) and `t=` (timestamp) tags from the DKIM-Signature header.
+    let re_b = Regex::new(r"\s*b=([A-Za-z0-9+/= \t\r\n]+);").unwrap();
+    let re_t = Regex::new(r"\s*t=\d+;").unwrap();
+
+    let without_b = re_b.replace_all(signed_email, "");
+    re_t.replace_all(&without_b, "").to_string()
 }
