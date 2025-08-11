@@ -1,3 +1,8 @@
+pub mod builder;
+pub mod canonicalize;
+pub mod headers;
+pub mod sign;
+
 use crate::common::crypto::{Algorithm, SigningKey};
 use std::marker::PhantomData;
 
