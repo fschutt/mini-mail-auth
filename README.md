@@ -1,8 +1,12 @@
 # Mini Mail Auth
 
-`mini-mail-auth` is a lightweight Rust crate for developers who "just need to sign an email with a DKIM key".
+`mini-mail-auth` is a lightweight Rust crate, forked from 
+[stalwartlabs/mail-auth](https://github.com/stalwartlabs/mail-auth) 
+for developers who "just need to sign an email with a DKIM key".
 
-It is a heavily stripped-down version of the excellent [`mail-auth`](https://crates.io/crates/mail-auth) crate, containing only the necessary components for DKIM signing using RSA-SHA256. This results in a minimal dependency footprint, ideal for applications where email signing is the only requirement.
+It is a heavily stripped-down version of the excellent [`mail-auth`](https://crates.io/crates/mail-auth) crate, 
+containing only the necessary components for DKIM signing using RSA-SHA256. This results in a minimal 
+dependency footprint, ideal for applications where email signing is the only requirement.
 
 ## Usage
 
