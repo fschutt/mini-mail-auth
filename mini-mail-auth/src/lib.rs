@@ -63,3 +63,10 @@ impl From<rsa::errors::Error> for Error {
         Error::CryptoError(err.to_string())
     }
 }
+
+// Convert from rsa::pkcs1::Error to our custom Error type.
+impl From<rsa::pkcs1::Error> for Error {
+    fn from(err: rsa::pkcs1::Error) -> Self {
+        Error::CryptoError(err.to_string())
+    }
+}
