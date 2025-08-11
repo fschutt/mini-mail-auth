@@ -1,4 +1,4 @@
-# Mini Mail Auth
+# mini-mail-auth
 
 `mini-mail-auth` is a lightweight Rust crate, forked from 
 [stalwartlabs/mail-auth](https://github.com/stalwartlabs/mail-auth) 
