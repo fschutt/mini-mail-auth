@@ -1,0 +1,16 @@
+[package]
+name = "mini-mail-auth"
+description = "A minimal DKIM signing library for Rust, for those who just need to sign an email."
+version = "0.1.0"
+edition = "2021"
+authors = [ "Stalwart Labs LLC <hello@stalw.art>" ]
+license = "Apache-2.0 OR MIT"
+repository = "https://github.com/stalwartlabs/mail-auth"
+homepage = "https://github.com/stalwartlabs/mail-auth"
+keywords = ["dkim", "mail", "email", "sign"]
+categories = ["email", "authentication"]
+
+[dependencies]
+rsa = "0.9.8"
+sha2 = "0.10.6"
+base64 = "0.22.1"
