@@ -61,7 +61,10 @@ impl<'x> Iterator for HeaderIterator<'x> {
                             .peek()
                             .is_none_or(|(_, next_byte)| ![b' ', b'\t'].contains(next_byte))
                         {
-                            let header_name = self.message.get(self.start_pos..pos + 1).unwrap_or_default();
+                            let header_name = self
+                                .message
+                                .get(self.start_pos..pos + 1)
+                                .unwrap_or_default();
                             self.start_pos = pos + 1;
                             return Some((header_name, b""));
                         }
@@ -69,9 +72,15 @@ impl<'x> Iterator for HeaderIterator<'x> {
                     _ => (),
                 }
             } else if ch == b'\n'
-                && self.iter.peek().is_none_or(|(_, next_byte)| ![b' ', b'\t'].contains(next_byte))
+                && self
+                    .iter
+                    .peek()
+                    .is_none_or(|(_, next_byte)| ![b' ', b'\t'].contains(next_byte))
             {
-                let header_name = self.message.get(self.start_pos..colon_pos).unwrap_or_default();
+                let header_name = self
+                    .message
+                    .get(self.start_pos..colon_pos)
+                    .unwrap_or_default();
                 let header_value = self.message.get(colon_pos + 1..pos + 1).unwrap_or_default();
                 self.start_pos = pos + 1;
                 return Some((header_name, header_value));

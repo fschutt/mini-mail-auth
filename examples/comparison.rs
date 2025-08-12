@@ -32,7 +32,7 @@ fn main() {
     };
 
     println!("ok!");
-    
+
     // Sign the email using the mini-mail-auth crate.
     let signed_email_mini_mail_auth =
         mini_mail_auth::sign_email(email, domain, selector, &private_key);

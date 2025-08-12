@@ -1,10 +1,7 @@
-use crate::{
-    dkim::Canonicalization,
-    Result, Error
-};
+use super::headers::{Writable, Writer};
+use crate::Result;
 use rsa::{pkcs1::DecodeRsaPrivateKey, Pkcs1v15Sign, RsaPrivateKey};
 use sha2::digest::Digest;
-use super::headers::{Writable, Writer};
 use std::marker::PhantomData;
 
 // --- Traits ---
@@ -77,7 +74,10 @@ pub struct RsaKey<T> {
 impl<T: HashImpl> RsaKey<T> {
     pub fn from_pkcs1_pem(private_key_pem: &str) -> Result<Self> {
         let inner = RsaPrivateKey::from_pkcs1_pem(private_key_pem)?;
-        Ok(RsaKey { inner, padding: PhantomData })
+        Ok(RsaKey {
+            inner,
+            padding: PhantomData,
+        })
     }
 }
 

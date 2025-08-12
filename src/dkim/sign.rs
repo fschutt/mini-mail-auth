@@ -6,9 +6,8 @@ use crate::{
     },
     Error,
 };
-use std::time::{SystemTime};
-use base64::{Engine as _, engine::general_purpose::STANDARD as BASE64_STANDARD};
-
+use base64::{engine::general_purpose::STANDARD as BASE64_STANDARD, Engine as _};
+use std::time::SystemTime;
 
 impl<T: SigningKey> DkimSigner<T, Done> {
     pub fn sign(&self, message: &[u8]) -> crate::Result<Signature> {

@@ -5,9 +5,9 @@ pub mod common;
 pub mod dkim;
 
 // Re-export the main signer struct and other necessary components.
-pub use dkim::{DkimSigner, Signature};
 pub use common::crypto::{RsaKey, Sha256};
 pub use common::headers::HeaderWriter;
+pub use dkim::{DkimSigner, Signature};
 
 /// A simplified function to sign an email with an RSA-SHA256 DKIM signature.
 ///
@@ -33,7 +33,6 @@ pub fn sign_email(email: &str, domain: &str, selector: &str, private_key: &str) 
 
     format!("{}{}", signature_rsa.to_header(), email)
 }
-
 
 /// A minimal error type for the library.
 #[derive(Debug, Clone, PartialEq, Eq)]
